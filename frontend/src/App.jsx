@@ -1,16 +1,17 @@
-import { useState } from 'react';
 import { Layout } from 'antd';
 import './App.less';
-import LoginForm from './components/LoginForm';
+import Login from './components/Login/Login';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import logo from './assets/img/logo.png';
 
 const { Header, Content } = Layout;
 
 function App() {
-	const [authed, setAuthed] = useState(false);
-
 	return (
-		<Layout style={{ height: '100vh' }}>
-			<Header></Header>
+		<Layout className='layout-container' style={{ height: '100vh' }}>
+			<Header>
+				<img className='header__logo' src={logo} alt='' />
+			</Header>
 			<Content
 				style={{
 					padding: '50px',
@@ -18,7 +19,15 @@ function App() {
 					overflowY: 'auto'
 				}}
 			>
-				{authed ? <div>Logged in</div> : <LoginForm onSuccess={() => setAuthed(true)} />}
+				<Router>
+					<Route exact={true} path='/'>
+						<Login />
+					</Route>
+
+					<Route path='/main'>
+						<div>Logged in</div>
+					</Route>
+				</Router>
 			</Content>
 		</Layout>
 	);
