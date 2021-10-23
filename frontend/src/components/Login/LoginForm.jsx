@@ -10,7 +10,10 @@ class Loginform extends Component {
 	onFinish = values => {
 		this.setState({ loading: true });
 		login(values)
-			.then(() => this.props.history.push('/main'))
+			.then(() => {
+				this.props.onSuccess();
+				this.props.history.push('/main');
+			})
 			.finally(() => this.setState({ loading: false }));
 	};
 
@@ -18,10 +21,8 @@ class Loginform extends Component {
 		return (
 			<Form
 				name='normal_login'
-				style={{ width: 300, margin: 'auto' }}
-				initialValues={{
-					remember: true
-				}}
+				className='login__form'
+				initialValues={{ remember: true }}
 				onFinish={this.onFinish}
 				size='large'
 			>

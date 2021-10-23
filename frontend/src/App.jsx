@@ -1,16 +1,24 @@
 import { Layout } from 'antd';
 import './App.less';
 import Login from './components/Login/Login';
+import Restaurants from './components/restaurants/Restaurants';
+import CartButton from './components/Cart/CartButton';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import logo from './assets/img/logo.png';
+import { useState } from 'react';
+import SignUp from './components/SignUp/SignUp';
 
 const { Header, Content } = Layout;
 
 function App() {
+	const [authed, setAuthed] = useState(false);
+
 	return (
 		<Layout className='layout-container' style={{ height: '100vh' }}>
-			<Header>
+			<Header className='layout__header'>
 				<img className='header__logo' src={logo} alt='' />
+				{/* {authed ? <CartButton /> : <SignUp />} */}
+				<CartButton />
 			</Header>
 			<Content
 				style={{
@@ -21,11 +29,11 @@ function App() {
 			>
 				<Router>
 					<Route exact={true} path='/'>
-						<Login />
+						<Login onSuccess={() => setAuthed(true)} />
 					</Route>
 
 					<Route path='/main'>
-						<div>Logged in</div>
+						<Restaurants />
 					</Route>
 				</Router>
 			</Content>

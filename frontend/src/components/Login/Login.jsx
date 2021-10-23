@@ -14,7 +14,7 @@ class Login extends Component {
 					<h1>
 						Order<span>Any</span>where
 					</h1>
-					<LoginForm />
+					<LoginForm onSuccess={this.props.onSuccess} />
 				</span>
 			</div>
 		);

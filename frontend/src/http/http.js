@@ -22,7 +22,8 @@ const http = METHODS.reduce((pre, key) => {
 		 * Response interecptors
 		 */
 		instance.interceptors.response.use(
-			res => (res.status === 200 ? res.data : Promise.reject('Request error, please try again later!')),
+			res =>
+				res.status >= 200 || res.status < 300 ? res.data : Promise.reject('Request error, please try again later!'),
 			err => {
 				message.error('Request error, please try again later!');
 				return Promise.reject(err);
