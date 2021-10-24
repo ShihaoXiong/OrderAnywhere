@@ -10,6 +10,10 @@ const CartButton = () => {
 	const [cartData, setCartData] = useState();
 
 	const onClose = () => setCartVisible(false);
+	const clearCart = () => {
+		setCartData();
+		setCartVisible(false);
+	};
 
 	useEffect(() => {
 		if (!cartVisible) return;
@@ -36,7 +40,7 @@ const CartButton = () => {
 						price={cartData?.totalPrice ?? 0}
 						cancel={onClose}
 						disableCheckout={cartData?.orderItemList?.length ? false : true}
-						clearCart={() => setCartData()}
+						clearCart={() => clearCart()}
 					/>
 				}
 			>

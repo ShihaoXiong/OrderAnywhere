@@ -3,7 +3,6 @@ import './App.less';
 import Login from './components/Login/Login';
 import Restaurants from './components/restaurants/Restaurants';
 import CartButton from './components/Cart/CartButton';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import logo from './assets/img/logo.png';
 import { useState } from 'react';
 import SignUp from './components/SignUp/SignUp';
@@ -16,9 +15,14 @@ function App() {
 	return (
 		<Layout className='layout-container' style={{ height: '100vh' }}>
 			<Header className='layout__header'>
-				<img className='header__logo' src={logo} alt='' />
-				{/* {authed ? <CartButton /> : <SignUp />} */}
-				<CartButton />
+				<span className='header__logo-container'>
+					<img className='header__logo' src={logo} alt='' />
+					<h1>
+						Order<span>Any</span>where
+					</h1>
+				</span>
+
+				{authed ? <CartButton /> : <SignUp />}
 			</Header>
 			<Content
 				style={{
@@ -27,15 +31,7 @@ function App() {
 					overflowY: 'auto'
 				}}
 			>
-				<Router>
-					<Route exact={true} path='/'>
-						<Login onSuccess={() => setAuthed(true)} />
-					</Route>
-
-					<Route path='/main'>
-						<Restaurants />
-					</Route>
-				</Router>
+				{authed ? <Restaurants /> : <Login onSuccess={() => setAuthed(true)} />}
 			</Content>
 		</Layout>
 	);

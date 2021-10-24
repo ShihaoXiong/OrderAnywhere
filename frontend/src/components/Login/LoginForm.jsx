@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { login } from '../../http/apis';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 
 class Loginform extends Component {
 	state = { loading: false };
@@ -12,7 +12,7 @@ class Loginform extends Component {
 		login(values)
 			.then(() => {
 				this.props.onSuccess();
-				this.props.history.push('/main');
+				// this.props.history.push('/main');
 			})
 			.finally(() => this.setState({ loading: false }));
 	};
@@ -44,4 +44,5 @@ class Loginform extends Component {
 	}
 }
 
-export default withRouter(Loginform);
+// export default withRouter(Loginform);
+export default Loginform;
