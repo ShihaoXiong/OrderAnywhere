@@ -12,7 +12,7 @@ const SignUp = () => {
 				Sign Up
 			</Button>
 
-			<Modal title='Sign Up' visible={showModal} onCancel={() => setShowModal(false)} okText='确认' cancelText='取消'>
+			<Modal title='Sign Up' visible={showModal} footer={null} onCancel={() => setShowModal(false)}>
 				<SignUpform closeModal={() => setShowModal(false)} />
 			</Modal>
 		</>

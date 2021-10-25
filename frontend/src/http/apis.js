@@ -17,4 +17,4 @@ export const addItemToCart = itemId => http.post(`/order/${itemId}`);
 
 export const getMenus = restId => http.get(`/restaurant/${restId}/menu`);
 
-export const signup = () => http.post('/signup');
+export const signup = data => http.post('/signup', data);

@@ -19,13 +19,7 @@ class Loginform extends Component {
 
 	render() {
 		return (
-			<Form
-				name='normal_login'
-				className='login__form'
-				initialValues={{ remember: true }}
-				onFinish={this.onFinish}
-				size='large'
-			>
+			<Form name='normal_login' className='login__form' onFinish={this.onFinish} size='large'>
 				<Form.Item name='username' rules={[{ required: true, message: 'Please input your Username!' }]}>
 					<Input prefix={<UserOutlined />} placeholder='Username' />
 				</Form.Item>

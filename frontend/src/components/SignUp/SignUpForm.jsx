@@ -6,9 +6,9 @@ import { signup } from '../../http/apis';
 class SignUpform extends Component {
 	state = { loading: false };
 
-	onFinish = () => {
+	onFinish = values => {
 		this.setState({ loading: true });
-		signup()
+		signup(values)
 			.then(() => message.success('Sign up successfully!'))
 			.finally(() => {
 				this.setState({ loading: false });
@@ -26,7 +26,7 @@ class SignUpform extends Component {
 				onFinish={this.onFinish}
 				size='large'
 			>
-				<Form.Item name='username' rules={[{ required: true, message: 'Please input your Username!' }]}>
+				<Form.Item name='email' rules={[{ required: true, message: 'Please input your Username!' }]}>
 					<Input prefix={<UserOutlined />} placeholder='Username' />
 				</Form.Item>
 
@@ -44,7 +44,7 @@ class SignUpform extends Component {
 
 				<Form.Item>
 					<Button style={{ width: '100%' }} type='primary' htmlType='submit' loading={this.state.loading}>
-						Log in
+						Sign Up
 					</Button>
 				</Form.Item>
 			</Form>
