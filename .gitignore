@@ -3,6 +3,7 @@
 # dependencies
 node_modules
 backend/target
+pk.pem
 /.pnp
 .pnp.js
 
